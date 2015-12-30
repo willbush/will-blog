@@ -6,7 +6,7 @@ namespace will_blog.Controllers
     {
         public ActionResult Index()
         {
-            return Content("Hello, World");
+            return View();
         }
     }
 }
