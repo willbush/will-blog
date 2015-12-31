@@ -8,7 +8,20 @@
   <h2>
     <a href="@Url.RouteUrl("home")">Will's Blog</a>
   </h2>
-  <a href="@Url.RouteUrl("login")">Login</a>
+  @if (User.Identity.IsAuthenticated)
+  {
+    <p>Welcome back, @User.Identity.Name</p>
+    <a href="@Url.RouteUrl("logout")">Logout</a>
+
+    if (@User.IsInRole("admin"))
+    {
+      <a href="@Url.Action("index", "Posts", new {area = "admin"})">View posts in admin</a>
+    }
+  }
+  else
+  {
+    <a href="@Url.RouteUrl("login")">Login</a>
+  }
 </header>
 @RenderBody()
 @RenderSection(name: "Scripts", required: false)

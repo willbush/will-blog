@@ -25,6 +25,13 @@ namespace will_blog
                 defaults: new {controller = "Auth", action = "Login"},
                 namespaces: namespaces
             );
+
+            routes.MapRoute(
+                name: "Logout",
+                url: "logout",
+                defaults: new {controller = "Auth", action = "Logout"},
+                namespaces: namespaces
+            );
         }
     }
 }
