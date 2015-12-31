@@ -1,8 +1,4 @@
-﻿@{
-  Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
   <title>@ViewBag.Title - Will's Blog</title>
@@ -15,6 +11,6 @@
   <a href="@Url.RouteUrl("login")">Login</a>
 </header>
 @RenderBody()
-@RenderSection("Scripts", false)
+@RenderSection(name: "Scripts", required: false)
 </body>
 </html>
