@@ -1,12 +1,17 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
 <html>
 <head>
   <title>@ViewBag.Title - Will's Blog</title>
+
+  @Styles.Render("~/styles")
 </head>
 <body>
 <header>
   <h2>
     <a href="@Url.RouteUrl("home")">Will's Blog</a>
+    <i class="glyphicon glyphicon-apple"/>
   </h2>
   @if (User.Identity.IsAuthenticated)
   {
@@ -23,7 +28,14 @@
     <a href="@Url.RouteUrl("login")">Login</a>
   }
 </header>
+
 @RenderBody()
+
+<footer>
+  &copy; @DateTime.UtcNow.Year - Will
+</footer>
+
+@Scripts.Render("~/scripts")
 @RenderSection(name: "Scripts", required: false)
 </body>
 </html>

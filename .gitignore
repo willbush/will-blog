@@ -22,9 +22,6 @@ bld/
 [Bb]in/
 [Oo]bj/
 
-# scripts
-scripts
-
 # Visual Studo 2015 cache/options directory
 .vs/
 
