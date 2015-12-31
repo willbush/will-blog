@@ -16,22 +16,19 @@ namespace will_blog
                 name: "Home",
                 url: "",
                 defaults: new {controller = "Posts", action = "Index"},
-                namespaces: namespaces
-            );
+                namespaces: namespaces);
 
             routes.MapRoute(
                 name: "Login",
                 url: "login",
                 defaults: new {controller = "Auth", action = "Login"},
-                namespaces: namespaces
-            );
+                namespaces: namespaces);
 
             routes.MapRoute(
                 name: "Logout",
                 url: "logout",
                 defaults: new {controller = "Auth", action = "Logout"},
-                namespaces: namespaces
-            );
+                namespaces: namespaces);
         }
     }
 }

@@ -6,18 +6,16 @@ namespace will_blog
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(BundleCss("~/admin/styles"));
-            bundles.Add(BundleCss("~/styles"));
+            bundles.Add(new StyleBundle("~/styles")
+                .Include("~/content/styles/bootstrap.css")
+                .Include("~/content/styles/Site.css"));
+
+            bundles.Add(new StyleBundle("~/admin/styles")
+                .Include("~/content/styles/bootstrap.css")
+                .Include("~/content/styles/Admin.css"));
 
             bundles.Add(BundleScripts("~/admin/scripts"));
             bundles.Add(BundleScripts("~/scripts"));
-        }
-
-        private static Bundle BundleCss(string path)
-        {
-            return new StyleBundle(path)
-                .Include("~/content/styles/bootstrap.css")
-                .Include("~/content/styles/site.css");
         }
 
         private static Bundle BundleScripts(string path)
