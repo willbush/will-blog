@@ -1,5 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using NHibernate.Linq;
+using will_blog.Areas.Admin.ViewModels;
 using will_blog.Infrastructure;
+using will_blog.Models;
 
 namespace will_blog.Areas.Admin.Controllers
 {
@@ -9,7 +13,10 @@ namespace will_blog.Areas.Admin.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View(new UsersIndex
+            {
+                Users = Database.Session.Query<User>().ToList()
+            });
         }
     }
 }
