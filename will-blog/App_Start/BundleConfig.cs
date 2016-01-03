@@ -14,7 +14,10 @@ namespace will_blog
                 .Include("~/content/styles/bootstrap.css")
                 .Include("~/content/styles/Admin.css"));
 
-            bundles.Add(BundleScripts("~/admin/scripts"));
+            var adminScriptBundle = BundleScripts("~/admin/scripts")
+                .Include("~/areas/admin/scripts/forms.js");
+            bundles.Add(adminScriptBundle);
+
             bundles.Add(BundleScripts("~/scripts"));
         }
 
