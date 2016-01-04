@@ -9,22 +9,25 @@ namespace will_blog
     {
         private const string UserKey = "will-blog.Auth.UserKey";
 
-        public static User GetCurrentUser()
+        public static User CurrentUser
         {
-            var userIdentity = HttpContext.Current.User.Identity;
+            get
+            {
+                var userIdentity = HttpContext.Current.User.Identity;
 
-            if (!userIdentity.IsAuthenticated)
-                return null;
+                if (!userIdentity.IsAuthenticated)
+                    return null;
 
-            var user = HttpContext.Current.Items[UserKey] as User;
-            if (user != null) return user;
+                var user = HttpContext.Current.Items[UserKey] as User;
+                if (user != null) return user;
 
-            user = Database.Session.Query<User>().FirstOrDefault(u => u.Username == userIdentity.Name);
-            if (user == null)
-                return null;
+                user = Database.Session.Query<User>().FirstOrDefault(u => u.Username == userIdentity.Name);
+                if (user == null)
+                    return null;
 
-            HttpContext.Current.Items[UserKey] = user;
-            return user;
+                HttpContext.Current.Items[UserKey] = user;
+                return user;
+            }
         }
     }
 }

@@ -172,6 +172,7 @@
     <Content Include="Areas\Admin\Views\Users\New.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Users\ResetPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\_RoleEditor.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -208,6 +209,7 @@
     <Compile Include="Infrastructure\SelectedTabAttribute.cs" />
     <Compile Include="Infrastructure\TransactionFilter.cs" />
     <Compile Include="Migrations\Migration001_UsersAndRoles.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\Auth.cs" />

@@ -1,4 +1,5 @@
-﻿using NHibernate.Mapping.ByCode;
+﻿using System.Collections.Generic;
+using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
 namespace will_blog.Models
@@ -11,6 +12,7 @@ namespace will_blog.Models
         public virtual string Username { get; set; }
         public virtual string Email { get; set; }
         public virtual string PasswordHash { get; set; }
+        public virtual IList<Role> Roles { get; set; } = new List<Role>();
 
         public virtual void SetPassword(string password)
         {
@@ -41,6 +43,12 @@ namespace will_blog.Models
                 x.Column("password_hash");
                 x.NotNullable(true);
             });
+
+            Bag(u => u.Roles, x =>
+            {
+                x.Table("roles_users");
+                x.Key(t => t.Column("user_id"));
+            }, x => x.ManyToMany(t => t.Column("role_id")));
         }
     }
 }

@@ -22,7 +22,7 @@
       <td>@user.Id</td>
       <td>@user.Username</td>
       <td>@user.Email</td>
-      <td>{todo}</td>
+      <td>@string.Join(", ", user.Roles.Select(role => role.Name))</td>
       <td>
         <div class="btn-group">
           <a href="@Url.Action("Edit", new {user.Id})" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i>Edit</a>

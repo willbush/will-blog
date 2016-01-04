@@ -1,16 +1,15 @@
 ﻿using System;
+using System.Linq;
 
-namespace will_blog.Infrastrucure
+namespace will_blog.Infrastructure
 {
     public class RoleProvider : System.Web.Security.RoleProvider
     {
-        private static readonly string[] Roles = {"admin"};
-
         public override string ApplicationName { get; set; }
 
         public override string[] GetRolesForUser(string username)
         {
-            return username == "Will" ? Roles : new string[] {};
+            return Auth.CurrentUser.Roles.Select(role => role.Name).ToArray();
         }
 
         public override bool IsUserInRole(string username, string roleName)
