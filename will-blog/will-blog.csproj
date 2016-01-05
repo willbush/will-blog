@@ -209,7 +209,10 @@
     <Compile Include="Infrastructure\SelectedTabAttribute.cs" />
     <Compile Include="Infrastructure\TransactionFilter.cs" />
     <Compile Include="Migrations\Migration001_UsersAndRoles.cs" />
+    <Compile Include="Migrations\Migration002_PostsAndTags.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\Auth.cs" />
