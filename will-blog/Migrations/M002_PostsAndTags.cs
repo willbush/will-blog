@@ -4,7 +4,7 @@ using FluentMigrator;
 namespace will_blog.Migrations
 {
     [Migration(2)]
-    public class Migration002_PostsAndTags : Migration
+    public class M002_PostsAndTags : Migration
     {
         public override void Up()
         {
