@@ -1,0 +1,40 @@
+﻿@model will_blog.Areas.Admin.ViewModels.PostsForm
+
+<h1>@(Model.IsNew ? "Create Post" : "Update Post")</h1>
+
+@using (Html.BeginForm("Form", "Posts"))
+{
+  if (!Model.IsNew)
+  {
+    @Html.HiddenFor(f => f.PostId)
+  }
+  @Html.AntiForgeryToken()
+
+  <div class="row">
+    <div class="col-lg-8">
+      @Html.ValidationSummary()
+
+      <div class="form-group">
+        @Html.LabelFor(f => f.Title)
+        @Html.TextBoxFor(f => f.Title, new {@class = "form-control"})
+      </div>
+      <div class="form-group">
+        @Html.LabelFor(f => f.Slug)
+        @Html.TextBoxFor(f => f.Slug, new {@class = "form-control"})
+      </div>
+      <div class="form-group">
+        @Html.LabelFor(f => f.Content)
+        @Html.TextAreaFor(f => f.Content, new {@class = "form-control"})
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="panel panel-info">
+        <div class="panel-heading">Post Actions</div>
+        <div class="panel-body">
+          <input type="submit" value="@(Model.IsNew ? "Publish Post" : "Update Posts")" class="btn btn-success btn-sm"/>
+          <a href="@Url.Action("Index")">or cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+}

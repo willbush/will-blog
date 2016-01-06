@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using NHibernate.Linq;
 using will_blog.Areas.Admin.ViewModels;
@@ -26,6 +27,62 @@ namespace will_blog.Areas.Admin.Controllers
             {
                 Posts = new PagedData<Post>(currentPostPage, totalPostCount, page, PostsPerPage)
             });
+        }
+
+        public ActionResult New()
+        {
+            return View("Form", new PostsForm {IsNew = true});
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var post = Database.Session.Load<Post>(id);
+            if (post == null)
+                return HttpNotFound();
+
+            return View("Form", new PostsForm
+            {
+                IsNew = false,
+                Content = post.Content,
+                PostId = id,
+                Slug = post.Slug,
+                Title = post.Title
+            });
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Form(PostsForm form)
+        {
+            form.IsNew = form.PostId == null;
+
+            if (!ModelState.IsValid)
+                return View(form);
+
+            Post post;
+
+            if (form.IsNew)
+            {
+                post = new Post
+                {
+                    CreatedAt = DateTime.UtcNow,
+                    User = Auth.CurrentUser
+                };
+            }
+            else
+            {
+                post = Database.Session.Load<Post>(form.PostId);
+
+                if (post == null)
+                    return HttpNotFound();
+
+                post.UpdatedAt = DateTime.UtcNow;
+            }
+            post.Title = form.Title;
+            post.Slug = form.Slug;
+            post.Content = form.Content;
+
+            Database.Session.SaveOrUpdate(post);
+            return RedirectToAction("Index");
         }
     }
 }
