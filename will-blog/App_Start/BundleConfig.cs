@@ -18,6 +18,9 @@ namespace will_blog
                 .Include("~/areas/admin/scripts/forms.js");
             bundles.Add(adminScriptBundle);
 
+            bundles.Add(new ScriptBundle("~/admin/post/scripts")
+                .Include("~/areas/admin/scripts/posteditor.js"));
+
             bundles.Add(BundleScripts("~/scripts"));
         }
 

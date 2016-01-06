@@ -1,4 +1,5 @@
-﻿@model will_blog.Areas.Admin.ViewModels.PostsForm
+﻿@using System.Web.Optimization
+@model will_blog.Areas.Admin.ViewModels.PostsForm
 
 <h1>@(Model.IsNew ? "Create Post" : "Update Post")</h1>
 
@@ -35,6 +36,44 @@
           <a href="@Url.Action("Index")">or cancel</a>
         </div>
       </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">Tags</div>
+        <div class="panel-body post-tag-editor">
+          <label for="new-tag-name">New Tag:</label>
+          <div class="input-group">
+            <input id="new-tag-name" type="text" class="new-tag-name form-control"/>
+            <span class="input-group-btn"><button disabled class="btn btn-primary add-tag-button">Add</button></span>
+          </div>
+
+          <ul class="tag-select">
+            <li class="template">
+              <a href="#" class="name"></a>
+
+              <input type="hidden" class="name-input"/>
+              <input type="hidden" class="selected-input"/>
+            </li>
+
+
+            @for (var i = 0; i < Model.Tags.Count; i++)
+            {
+              var tag = Model.Tags[i];
+              <li data-tag-id="@tag.Id" class="@(tag.IsChecked ? "selected" : "")">
+                <a href="#">@tag.Name</a>
+
+                <input type="hidden" name="Tags[@(i)].Id" value="@tag.Id"/>
+                <input type="hidden" name="Tags[@(i)].Name" value="@tag.Name"/>
+                <input type="hidden" name="Tags[@(i)].IsChecked" value="@tag.IsChecked.ToString()" class="selected-input"/>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
+}
+
+@section Scripts
+{
+  @Scripts.Render("~/admin/post/scripts")
 }

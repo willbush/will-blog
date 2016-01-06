@@ -10,7 +10,7 @@ namespace will_blog.Models
         public virtual string Slug { get; set; }
         public virtual string Name { get; set; }
 
-        public virtual IList<Post> Posts { get; set; }
+        public virtual IList<Post> Posts { get; set; } = new List<Post>();
     }
 
     public class TagMap : ClassMapping<Tag>

@@ -18,7 +18,7 @@ namespace will_blog.Models
         public virtual DateTime? UpdatedAt { get; set; }
         public virtual DateTime? DeletedAt { get; set; }
 
-        public virtual IList<Tag> Tags { get; set; }
+        public virtual IList<Tag> Tags { get; set; } = new List<Tag>();
 
         public virtual bool IsDeleted => DeletedAt != null;
     }
