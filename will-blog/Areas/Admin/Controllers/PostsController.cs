@@ -84,5 +84,43 @@ namespace will_blog.Areas.Admin.Controllers
             Database.Session.SaveOrUpdate(post);
             return RedirectToAction("Index");
         }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Trash(int id)
+        {
+            return ModifyPost(id, delegate(Post post)
+            {
+                post.DeletedAt = DateTime.UtcNow;
+                Database.Session.Update(post);
+                return RedirectToAction("Index");
+            });
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            return ModifyPost(id, delegate(Post post)
+            {
+                Database.Session.Delete(post);
+                return RedirectToAction("Index");
+            });
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Restore(int id)
+        {
+            return ModifyPost(id, delegate(Post post)
+            {
+                post.DeletedAt = null;
+                Database.Session.Update(post);
+                return RedirectToAction("Index");
+            });
+        }
+
+        private ActionResult ModifyPost(int id, Func<Post, ActionResult> modify)
+        {
+            var post = Database.Session.Load<Post>(id);
+            return post == null ? HttpNotFound() : modify(post);
+        }
     }
 }

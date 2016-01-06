@@ -51,7 +51,7 @@
     var cls = "";
     if (post.IsDeleted)
     {
-      cls = "danager";
+      cls = "danger";
     }
     <tr class="@cls">
       <td>@post.Title</td>
@@ -66,19 +66,24 @@
         @if (!post.IsDeleted)
         {
           <div class="btn-group btn-group-xs">
-            <a href="#" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Trash</a>
-            <a href="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-              <span class="caret"></span></a>
+            <a href="@Url.Action("trash", new {post.Id})" class="btn btn-danger" data-post="Are you sure you want to trash this post?">
+              <i class="glyphicon glyphicon-remove"></i> Trash
+            </a>
+            <a href="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li>
-                <a href="#"><i class="glyphicon glyphicon-remove"></i> delete</a>
+                <a href="@Url.Action("delete", new {post.Id})" data-post="Are you sure you want to permanently delete this post?">
+                  <i class="glyphicon glyphicon-remove"></i> Delete
+                </a>
               </li>
             </ul>
           </div>
         }
         else
         {
-          <a href="#" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-plus-sign"></i> restore</a>
+          <a href="@Url.Action("restore", new {post.Id})" class="btn btn-xs btn-success" data-post="">
+            <i class="glyphicon glyphicon-plus-sign"></i> Restore
+          </a>
         }
       </td>
     </tr>
