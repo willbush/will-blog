@@ -10,7 +10,7 @@ namespace will_blog.Infrastructure
 
         public int TotalCount { get; private set; }
         public int Page { get; }
-        public int PerPage { get; private set; }
+        public int PostsPerPage { get; private set; }
         public int TotalPages { get; private set; }
 
         public bool HasNextPage { get; private set; }
@@ -38,14 +38,14 @@ namespace will_blog.Infrastructure
             }
         }
 
-        public PagedData(IEnumerable<T> currentItems, int totalCount, int page, int perPage)
+        public PagedData(IEnumerable<T> currentItems, int totalCount, int page, int postsPerPage)
         {
             _currentItems = currentItems;
             TotalCount = totalCount;
             Page = page;
-            PerPage = perPage;
+            PostsPerPage = postsPerPage;
 
-            TotalPages = (int) Math.Ceiling((float) TotalCount / perPage);
+            TotalPages = (int) Math.Ceiling((float) TotalCount / postsPerPage);
             HasNextPage = Page < TotalPages;
             HasPreviousPage = Page > 1;
         }

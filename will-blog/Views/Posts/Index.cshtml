@@ -1,5 +1,9 @@
-﻿@{
-    ViewBag.Title = "Posts";
+﻿@model will_blog.ViewModel.PostsIndex
+
+@{
+  ViewBag.Title = "Posts";
 }
 
-<h2>Posts Index</h2>
+<div>
+@Html.Partial("_Posts", Model.Posts)
+</div>

@@ -13,6 +13,30 @@ namespace will_blog
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "TagForRealThisTime",
+                url: "tag/{idAndSlug}",
+                defaults: new {controller = "Posts", action = "Tag"},
+                namespaces: namespaces);
+
+            routes.MapRoute(
+                name: "Tag",
+                url: "tag/{id}-{slug}",
+                defaults: new {controller = "Posts", action = "Tag"},
+                namespaces: namespaces);
+
+            routes.MapRoute(
+                name: "PostForRealThisTime",
+                url: "post/{idAndSlug}",
+                defaults: new {controller = "Posts", action = "Show"},
+                namespaces: namespaces);
+
+            routes.MapRoute(
+                name: "Post",
+                url: "post/{id}-{slug}",
+                defaults: new {controller = "Posts", action = "Show"},
+                namespaces: namespaces);
+
+            routes.MapRoute(
                 name: "Home",
                 url: "",
                 defaults: new {controller = "Posts", action = "Index"},

@@ -1,0 +1,28 @@
+﻿@model will_blog.Infrastructure.PagedData<will_blog.Models.Post>
+
+@foreach (var post in Model)
+{
+    @Html.Partial("_Post", post)
+}
+
+<ul class="list-unstyled">
+  @if (Model.HasPreviousPage)
+  {
+    <li class="pull-left">
+      <a href="@Url.Action(null, new {page = Model.PreviousPage})" class="btn btn-primary">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Newer Posts
+      </a>
+    </li>
+  }
+
+  @if (Model.HasNextPage)
+  {
+    <li class="pull-right">
+      <a href="@Url.Action(null, new {page = Model.NextPage})" class="btn btn-primary">
+        Older Posts
+        <i class="glyphicon glyphicon-chevron-right"></i>
+      </a>
+    </li>
+  }
+</ul>
