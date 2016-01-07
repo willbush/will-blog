@@ -76,7 +76,8 @@ namespace will_blog.Areas.Admin.Controllers
             });
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        // validate input set to false to allow ckeditor to work.
+        [HttpPost, ValidateAntiForgeryToken, ValidateInput(false)]
         public ActionResult Form(PostsForm form)
         {
             form.IsNew = form.PostId == null;
