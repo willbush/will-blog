@@ -21,7 +21,9 @@ namespace will_blog
             bundles.Add(new ScriptBundle("~/admin/post/scripts")
                 .Include("~/areas/admin/scripts/posteditor.js"));
 
-            bundles.Add(BundleScripts("~/scripts"));
+            bundles.Add(BundleScripts("~/scripts")
+                .Include("~/scripts/jquery.timeago.js")
+                .Include("~/scripts/Frontend.js"));
         }
 
         private static Bundle BundleScripts(string path)

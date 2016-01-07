@@ -1,6 +1,6 @@
 ﻿@model will_blog.Models.Post
 
-<article>
+<article class="post">
   <h1><a href="@Url.RouteUrl("Post", new {Model.Id, Model.Slug})">@Model.Title</a></h1>
   <div>
     @Html.Raw(Model.Content)
@@ -14,6 +14,6 @@
         </li>
       }
     </ul>
-    Posted: @((int) (DateTime.UtcNow - Model.CreatedAt).TotalMinutes) minutes ago
+    Posted: <abbr class="timeago" title="@Model.CreatedAt.ToString("yyyy-MM-ddTHH:mm:ssZ")"></abbr>
   </footer>
 </article>

@@ -11,7 +11,7 @@ namespace will_blog.Controllers
 {
     public class PostsController : Controller
     {
-        private const int PostPerPage = 10;
+        private const int PostPerPage = 5;
 
         public ActionResult Index(int page = 1)
         {

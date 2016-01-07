@@ -7,37 +7,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8"/>
   <title>@ViewBag.Title - Will's Blog</title>
 
   @Styles.Render("~/styles")
 </head>
 <body>
-<header>
-  <h2>
-    <a href="@Url.RouteUrl("home")">Will's Blog</a>
-    <i class="glyphicon glyphicon-apple"/>
-  </h2>
-  @if (User.Identity.IsAuthenticated)
-  {
-    <p>Welcome back, @User.Identity.Name</p>
-    <a href="@Url.RouteUrl("logout")">Logout</a>
+<div class="site-header">
+  <header class="container">
+    <h1 class="page-header">
+      <a href="@Url.RouteUrl("Home")">Awesome Stuff</a>
+      <small>a simple blog powered by ASP .NET MVC</small>
+    </h1>
+  </header>
+</div>
 
-    if (@User.IsInRole("admin"))
-    {
-      <a href="@Url.Action("index", "Posts", new {area = "admin"})">View posts in admin</a>
-    }
-  }
-  else
-  {
-    <a href="@Url.RouteUrl("login")">Login</a>
-  }
-</header>
-
-@RenderBody()
-
-<footer>
-  &copy; @DateTime.UtcNow.Year - Will
-</footer>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      @RenderBody()
+    </div>
+    <div class="col-lg-4 sidebar">
+      @Html.Action("Sidebar", "Layout")
+    </div>
+  </div>
+  <footer>
+    &copy; @DateTime.UtcNow.Year
+  </footer>
+</div>
 
 @Scripts.Render("~/scripts")
 @RenderSection(name: "Scripts", required: false)

@@ -53,6 +53,12 @@ namespace will_blog
                 url: "logout",
                 defaults: new {controller = "Auth", action = "Logout"},
                 namespaces: namespaces);
+
+            routes.MapRoute(
+                name: "Sidebar",
+                url: "",
+                defaults: new {controller = "Layout", action = "Sidebar"},
+                namespaces: namespaces);
         }
     }
 }

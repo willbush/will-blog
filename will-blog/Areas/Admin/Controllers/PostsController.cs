@@ -14,7 +14,7 @@ namespace will_blog.Areas.Admin.Controllers
     [SelectedTab("posts")]
     public class PostsController : Controller
     {
-        private const int PostsPerPage = 10;
+        private const int PostsPerPage = 5;
 
         public ActionResult Index(int page = 1)
         {

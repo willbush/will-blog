@@ -8,13 +8,13 @@ namespace will_blog.Infrastructure
     {
         private readonly IEnumerable<T> _currentItems;
 
-        public int TotalCount { get; private set; }
+        public int TotalCount { get; }
         public int Page { get; }
         public int PostsPerPage { get; private set; }
-        public int TotalPages { get; private set; }
+        public int TotalPages { get; }
 
-        public bool HasNextPage { get; private set; }
-        public bool HasPreviousPage { get; private set; }
+        public bool HasNextPage { get; }
+        public bool HasPreviousPage { get; }
 
         public int NextPage
         {
