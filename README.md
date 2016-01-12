@@ -1,5 +1,5 @@
 # will-blog
-## This blog is a self-educational project made following the "COMPREHENSIVE ASP.NET MVC" video series found [here](http://www.3dbuzz.com/training/view/comprehensive-aspnet-mvc).
+### This blog is a self-educational project made following the "COMPREHENSIVE ASP.NET MVC" video series found [here](http://www.3dbuzz.com/training/view/comprehensive-aspnet-mvc).
 
 The blog is built using ASP.NET MVC with MySql database, Fluent NHibernate ORM, JQuery, and bootstrap.
 
